@@ -25,6 +25,7 @@ void exibirMenu() {
     printf("1. Adicionar item\n");
     printf("2. Remover item\n");
     printf("3. Listar itens\n");
+    printf("4. Buscar item\n");
     printf("0. Sair\n");
     printf("Escolha uma opcao: ");
 }
@@ -93,6 +94,29 @@ void listarItens() {
     }
 }
 
+void buscarItem() {
+    char nomeBusca[30];
+    printf("\nNome do item a buscar: ");
+    scanf("%s", nomeBusca);
+    
+    bool encontrado = false;
+    
+    for(int i = 0; i < numItens; i++) {
+        if(strcmp(mochila[i].nome, nomeBusca) == 0) {
+            encontrado = true;
+            printf("\nItem encontrado!\n");
+            printf("Nome: %s\n", mochila[i].nome);
+            printf("Tipo: %s\n", mochila[i].tipo);
+            printf("Quantidade: %d\n", mochila[i].quantidade);
+            break;
+        }
+    }
+    
+    if(!encontrado) {
+        printf("\nItem nao encontrado!\n");
+    }
+}
+
 int main() {
     int opcao;
     
@@ -113,6 +137,9 @@ int main() {
                 break;
             case 3:
                 listarItens();
+                break;
+            case 4:
+                buscarItem();
                 break;
             case 0:
                 printf("\nSaindo do sistema...\n");
